@@ -11,26 +11,37 @@ CD pipeline for automated deployment.
 
 Setup
 
-Clone the repository:git clone https://github.com/Jagapathi-G/movie-recommender-api.git
+Clone the repository:
+
+git clone https://github.com/Jagapathi-G/movie-recommender-api.git
 cd movie-recommender-api
 
 
-Install dependencies:python -m venv venv
+Install dependencies:
+
+python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
 
-Initialize the database:python database.py
+Initialize the database:
+
+python database.py
 
 
-Run the server:docker compose up -d --build
+Run the server:
+
+docker compose up -d --build
 
 
-Test the API:curl -X POST http://127.0.0.1:8000/recommend -H "Content-Type: application/json" -d '{"genre": "Comedy", "min_rating": 4.0, "n": 5}'
+Test the API:
+
+curl -X POST http://127.0.0.1:8000/recommend -H "Content-Type: application/json" -d '{"genre": "Comedy", "min_rating": 4.0, "n": 5}'
 
 
 
 CI/CD
+
 ![CI Pipeline](https://github.com/Jagapathi-G/movie-recommender-api/actions/workflows/main.yml/badge.svg)
 ![CD Pipeline](https://github.com/Jagapathi-G/movie-recommender-api/actions/workflows/deploy.yml/badge.svg)
 
@@ -39,7 +50,7 @@ CD: SSH-based deployment to a local machine using Docker Compose (.github/workfl
 
 Deployment
 
-Automated deployment via SSH to a local machine exposed to GitHub Actions (e.g., using ngrok).
+Automated deployment via SSH to a local machine exposed to GitHub Actions (using ngrok).
 Uses docker-compose.yml to manage the FastAPI service.
 
 
