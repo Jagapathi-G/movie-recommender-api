@@ -1,0 +1,33 @@
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - monitoring
+
+  nginx-exporter:
+    image: quay.io/martinhelmich/prometheus-nginxlog-exporter:v1
+    volumes:
+      - /home/jaga/recommender-system/logs:/logs
+      - ./nginx-exporter.hcl:/etc/prometheus-nginxlog-exporter.hcl
+    ports:
+      - "9117:9117"
+    command: -config-file=/etc/prometheus-nginxlog-exporter.hcl
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
