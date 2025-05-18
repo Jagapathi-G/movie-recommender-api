@@ -1,15 +1,17 @@
 services:
     app:
       build: .
-      ports:
-        - "8001:8000"  # App now listens on 8001 externally, 8000 internally
       volumes:
         - .:/app
+      environment:
+        - UVICORN_WORKERS=2  # Optional: Run multiple workers per container
+      deploy:
+        replicas: 3  # Run 3 instances of the app
 
     nginx:
       image: nginx:latest
       ports:
-        - "8000:80"  # Nginx listens on 8000, proxies to app
+        - "8000:80"
       volumes:
         - ./nginx.conf:/etc/nginx/nginx.conf
         - ./logs:/var/log/nginx
