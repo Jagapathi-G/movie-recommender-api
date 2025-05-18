@@ -1,4 +1,4 @@
-name: Deploy to Local Machine
+name: CD
 
   on:
     push:
@@ -7,7 +7,6 @@ name: Deploy to Local Machine
   jobs:
     deploy:
       runs-on: ubuntu-latest
-      needs: [ test ]
       steps:
         - name: Checkout repo
           uses: actions/checkout@v4

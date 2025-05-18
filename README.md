@@ -31,6 +31,8 @@ Test the API:curl -X POST http://127.0.0.1:8000/recommend -H "Content-Type: appl
 
 
 CI/CD
+![CI Pipeline](https://github.com/Jagapathi-G/movie-recommender-api/actions/workflows/main.yml/badge.svg)
+![CD Pipeline](https://github.com/Jagapathi-G/movie-recommender-api/actions/workflows/deploy.yml/badge.svg)
 
 CI: GitHub Actions pipeline (.github/workflows/main.yml) for installing dependencies and running tests (pytest).
 CD: SSH-based deployment to a local machine using Docker Compose (.github/workflows/deploy.yml).
