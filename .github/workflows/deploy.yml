@@ -1,26 +1,26 @@
 name: Deploy to Local Machine
 
-on:
-  push:
-    branches: [main]
+  on:
+    push:
+      branches: [ main ]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      needs: [ test ]
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v4
 
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
-
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd /home/${{ secrets.SSH_USER }}/recommender-system
-          git pull origin main
-          docker compose down
-          docker compose up -d --build
-
+        - name: Deploy via SSH
+          uses: appleboy/ssh-action@v1.0.3
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USER }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            port: ${{ secrets.SSH_PORT }}
+            script: |
+              cd /home/${{ secrets.SSH_USER }}/recommender-system
+              git pull origin main
+              docker compose down
+              docker compose up -d --build
