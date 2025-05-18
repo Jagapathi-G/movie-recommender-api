@@ -22,5 +22,5 @@ jobs:
           cd /home/${{ secrets.SSH_USER }}/recommender-system
           git pull origin main
           docker compose down
-          docker compose up -d --build
+          docker compose up -d --build --scale app=3
 
