@@ -1,7 +1,5 @@
 # Movie Recommendation API
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/Jagapathi-G/movie-recommender-api.svg?style=social)](https://github.com/Jagapathi-G/movie-recommender-api/stargazers)
 [![Docker](https://img.shields.io/badge/Docker-Enabled-blue?logo=docker)](https://www.docker.com/)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.68.0-green?logo=fastapi)](https://fastapi.tiangolo.com/)
@@ -9,7 +7,7 @@
 [![Grafana](https://img.shields.io/badge/Grafana-Dashboards-orange?logo=grafana)](https://grafana.com/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Jagapathi-G/movie-recommender-api)](https://github.com/Jagapathi-G/movie-recommender-api/commits/main)
 
-A non-ML-based movie recommendation API built with FastAPI, SQLite, and the MovieLens 1M dataset. The API provides movie recommendations based on genre and minimum rating, with a scalable architecture using Docker, Nginx for load balancing, and Prometheus/Grafana for monitoring. Deployment is automated using GitHub Actions.
+A movie recommendation API built with FastAPI, SQLite, and the MovieLens 1M dataset. The API provides movie recommendations based on genre and minimum rating, with a scalable architecture using Docker, Nginx for load balancing, and Prometheus/Grafana for monitoring. Deployment is automated using GitHub Actions.
 
 ## Features
 - **Recommendation Endpoint**: Get movie recommendations by genre and minimum rating (`POST /recommend`).
@@ -35,13 +33,13 @@ A non-ML-based movie recommendation API built with FastAPI, SQLite, and the Movi
 
 ## Setup Instructions
 
-### 1. Clone the Repository
+### Clone the Repository
 ```bash
 git clone https://github.com/Jagapathi-G/movie-recommender-api.git
 cd movie-recommender-api
 ```
 
-#### Local Testing (Optional)
+### Local Testing
 If you want to test locally before deployment:
 ```bash
 docker compose up -d --build --scale app=3
@@ -96,13 +94,13 @@ Below is a screenshot of the Grafana dashboard (from local setup):
 ![Grafana Dashboard](grafana-dashboard.png)
 
 
-CI/CD
+## Deployment
 
 ![CI Pipeline](https://github.com/Jagapathi-G/movie-recommender-api/actions/workflows/main.yml/badge.svg)
 ![CD Pipeline](https://github.com/Jagapathi-G/movie-recommender-api/actions/workflows/deploy.yml/badge.svg)
 
-CI: GitHub Actions pipeline (.github/workflows/main.yml) for installing dependencies and running tests (pytest).
-CD: SSH-based deployment to a local machine using Docker Compose (.github/workflows/deploy.yml).
+- CI: GitHub Actions pipeline (.github/workflows/main.yml) for installing dependencies and running tests (pytest).
+- CD: SSH-based deployment to a local or remote machine using Docker Compose (.github/workflows/deploy.yml).
 
 
 ## License
